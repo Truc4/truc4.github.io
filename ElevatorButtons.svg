@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="13.230229mm"
+   height="24.773657mm"
+   viewBox="0 0 13.230229 24.773657"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ElevatorButtons.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="92.24467"
+     inkscape:cy="18.161679"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(3.5439611e-4,-272.22633)">
+    <path
+       sodipodi:type="star"
+       style="fill:#000000;fill-opacity:0.55778898;stroke:none;stroke-width:0.26458332"
+       id="path833"
+       sodipodi:sides="3"
+       sodipodi:cx="6.614583"
+       sodipodi:cy="289.43384"
+       sodipodi:r1="4.1148334"
+       sodipodi:r2="2.0574167"
+       sodipodi:arg1="-1.5707963"
+       sodipodi:arg2="-0.52359878"
+       inkscape:flatsided="true"
+       inkscape:rounded="1.19"
+       inkscape:randomized="0"
+       d="m 6.6145831,285.319 c 8.4812499,0 7.8041749,-1.17272 3.5635499,6.17225 -4.2406248,7.34498 -2.8864757,7.34498 -7.1271003,0 -4.2406245,-7.34497 -4.9176991,-6.17225 3.5635504,-6.17225 z"
+       inkscape:transform-center-y="1.6913073" />
+    <path
+       sodipodi:type="star"
+       style="fill:#000000;fill-opacity:0.55778898;stroke:none;stroke-width:0.26458332"
+       id="path833-8"
+       sodipodi:sides="3"
+       sodipodi:cx="6.6149373"
+       sodipodi:cy="-279.79248"
+       sodipodi:r1="4.1148334"
+       sodipodi:r2="2.0574167"
+       sodipodi:arg1="-1.5707963"
+       sodipodi:arg2="-0.52359878"
+       inkscape:flatsided="true"
+       inkscape:rounded="1.19"
+       inkscape:randomized="0"
+       d="m 6.6149374,-283.90731 c 8.4812496,0 7.8041746,-1.17273 3.5635496,6.17225 -4.2406245,7.34497 -2.8864754,7.34497 -7.1271,0 -4.2406245,-7.34498 -4.9176991,-6.17225 3.5635504,-6.17225 z"
+       inkscape:transform-center-y="-1.6913235"
+       transform="scale(1,-1)" />
+  </g>
+</svg>

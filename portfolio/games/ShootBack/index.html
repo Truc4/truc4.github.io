@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/favicon.png">
+    <title>ShootBack</title>
+</head>
+
+<body>
+    <noscript style="position: relative; z-index: 60000; color: white;">
+        Please enable Javascript
+    </noscript>
+    <div id="load-black"
+        style="background: black; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 50000;">
+    </div>
+    <nav class="navbar-module bg-primary" data-active="nav-item-games"></nav>
+    <div class="container my-4">
+        <h2>Shoot Back</h2>
+        <p>This was the second game I made, this time for a the Game Maker's Toolkit gamejam.
+            For this gamejam I worked with a team of six, people I met right before the jam.
+            I again used the Godot game engine for this game.
+        </p>
+        <ul>
+            <li><strong>Redfusion:</strong> Sound</li>
+            <li><strong>Jaimy:</strong> Music</li>
+            <li><strong>Rayboy1317:</strong> Design</li>
+            <li><strong>TheAbstractConceptOfCheese:</strong> Art</li>
+            <li><strong>Truce (Me):</strong> Programming</li>
+            <li><strong>SimplyBLG:</strong> Programming</li>
+        </ul>
+        <p>
+            This game has a lot more depth than my first game, I spent most of my
+            time programming the mechanics.
+        </p>
+        <label><a href="https://itch.io/jam/gmtk-2018/rate/301429" target="_blank">GMTK</a> entry: </label>
+        <a class="btn btn-primary collide" href="https://truc-e.itch.io/shoot-back" target="_blank">ShootBack</a>
+        <!-- <label>Download: </label> -->
+        <!-- <a href="https://gamejolt.com/games/shapes/360636">https://gamejolt.com/games/shapes/360636</a> -->
+        <!-- <br> -->
+        <!-- <a class="btn btn-primary collide mt-2" href="../ShootBackHTML/index.html">Play</a> -->
+    </div>
+    <div class="godot-game">
+        <div id="container" class="collide">
+            <canvas id="canvas" width="640" height="480">
+                HTML5 canvas appears to be unsupported in the current browser.<br />
+                Please try updating or use a different browser.
+            </canvas>
+            <div id="status">
+                <div id='status-progress' style='display: none;' oncontextmenu="event.preventDefault();">
+                    <div id='status-progress-inner'></div>
+                </div>
+                <div id='status-indeterminate' style='display: none;' oncontextmenu="event.preventDefault();">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div id="status-notice" class="godot" style='display: none;'></div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="/portfolio/games/shootback/ShootBack.js"></script>
+        <script type="text/javascript">//<![CDATA[
+
+            var engine = new Engine;
+
+            (function () {
+
+                const BASENAME = 'ShootBack';
+                const DEBUG_ENABLED = false;
+                const INDETERMINATE_STATUS_STEP_MS = 100;
+
+                var container = document.getElementById('container');
+                var canvas = document.getElementById('canvas');
+                var statusProgress = document.getElementById('status-progress');
+                var statusProgressInner = document.getElementById('status-progress-inner');
+                var statusIndeterminate = document.getElementById('status-indeterminate');
+                var statusNotice = document.getElementById('status-notice');
+
+                var initializing = true;
+                var statusMode = 'hidden';
+                var indeterminiateStatusAnimationId = 0;
+
+                setStatusMode('indeterminate');
+                engine.setCanvas(canvas);
+
+                function setStatusMode(mode) {
+
+                    if (statusMode === mode || !initializing)
+                        return;
+                    [statusProgress, statusIndeterminate, statusNotice].forEach(elem => {
+                        elem.style.display = 'none';
+                    });
+                    if (indeterminiateStatusAnimationId !== 0) {
+                        cancelAnimationFrame(indeterminiateStatusAnimationId);
+                        indeterminiateStatusAnimationId = 0;
+                    }
+                    switch (mode) {
+                        case 'progress':
+                            statusProgress.style.display = 'block';
+                            break;
+                        case 'indeterminate':
+                            statusIndeterminate.style.display = 'block';
+                            indeterminiateStatusAnimationId = requestAnimationFrame(animateStatusIndeterminate);
+                            break;
+                        case 'notice':
+                            statusNotice.style.display = 'block';
+                            break;
+                        case 'hidden':
+                            break;
+                        default:
+                            throw new Error("Invalid status mode");
+                    }
+                    statusMode = mode;
+                }
+
+                function animateStatusIndeterminate(ms) {
+                    var i = Math.floor(ms / INDETERMINATE_STATUS_STEP_MS % 8);
+                    if (statusIndeterminate.children[i].style.borderTopColor == '') {
+                        Array.prototype.slice.call(statusIndeterminate.children).forEach(child => {
+                            child.style.borderTopColor = '';
+                        });
+                        statusIndeterminate.children[i].style.borderTopColor = '#dfdfdf';
+                    }
+                    requestAnimationFrame(animateStatusIndeterminate);
+                }
+
+                function setStatusNotice(text) {
+
+                    while (statusNotice.lastChild) {
+                        statusNotice.removeChild(statusNotice.lastChild);
+                    }
+                    var lines = text.split('\n');
+                    lines.forEach((line, index) => {
+                        statusNotice.appendChild(document.createTextNode(line));
+                        statusNotice.appendChild(document.createElement('br'));
+                    });
+                };
+
+                engine.setProgressFunc((current, total) => {
+
+                    if (total > 0) {
+                        statusProgressInner.style.width = current / total * 100 + '%';
+                        setStatusMode('progress');
+                        if (current === total) {
+                            // wait for progress bar animation
+                            setTimeout(() => {
+                                setStatusMode('indeterminate');
+                            }, 500);
+                        }
+                    } else {
+                        setStatusMode('indeterminate');
+                    }
+                });
+
+                if (DEBUG_ENABLED) {
+                    var outputRoot = document.getElementById("output-panel");
+                    var outputScroll = document.getElementById("output-scroll");
+                    var OUTPUT_MSG_COUNT_MAX = 400;
+
+                    document.getElementById('output-clear').addEventListener('click', () => {
+                        while (outputScroll.firstChild) {
+                            outputScroll.firstChild.remove();
+                        }
+                    });
+
+                    outputRoot.style.display = 'block';
+
+                    function print(text) {
+                        while (outputScroll.childElementCount >= OUTPUT_MSG_COUNT_MAX) {
+                            outputScroll.firstChild.remove();
+                        }
+                        var msg = document.createElement("div");
+                        if (String.prototype.trim.call(text).startsWith("**ERROR**")) {
+                            msg.style.color = "#d44";
+                        } else if (String.prototype.trim.call(text).startsWith("**WARNING**")) {
+                            msg.style.color = "#ccc000";
+                        } else if (String.prototype.trim.call(text).startsWith("**SCRIPT ERROR**")) {
+                            msg.style.color = "#c6d";
+                        }
+                        msg.textContent = text;
+                        var scrollToBottom = outputScroll.scrollHeight - (outputScroll.clientHeight + outputScroll.scrollTop) < 10;
+                        outputScroll.appendChild(msg);
+                        if (scrollToBottom) {
+                            outputScroll.scrollTop = outputScroll.scrollHeight;
+                        }
+                    };
+
+                    function printError(text) {
+                        if (!String.prototype.trim.call(text).startsWith('**ERROR**: ')) {
+                            text = '**ERROR**: ' + text;
+                        }
+                        print(text);
+                    }
+
+                    engine.setStdoutFunc(text => {
+                        print(text);
+                        console.log(text);
+                    });
+
+                    engine.setStderrFunc(text => {
+                        printError(text);
+                        console.warn(text);
+                    });
+                }
+
+                engine.startGame(BASENAME + '.pck').then(() => {
+                    setStatusMode('hidden');
+                    initializing = false;
+                }, err => {
+                    if (DEBUG_ENABLED) {
+                        printError(err.message);
+                        console.warn(err);
+                    }
+                    setStatusNotice(err.message);
+                    setStatusMode('notice');
+                    initializing = false;
+                });
+            })();
+        //]]></script>
+    </div>
+    <div class="godot-hide my-2 text-center">
+        <h4>Godot's HTML export works best with Firefox</h4>
+        <br>
+        <h5><strong>F11 for fullscreen</strong>
+            <br>
+            A and D/Left and Right to move
+            <br>
+            R to reset
+            <br>
+            Click to shoot
+            <br>
+            Kill all enemies to proceed
+        </h5>
+    </div>
+    <!-- <h5 class="text-center mt-2 godot-game">Godot's HTML export works best with Firefox</h5> -->
+    <div style="height: 100px;"></div>
+    <script src="/init.bundle.js"></script>
+    <script src="/godot.bundle.js"></script>
+</body>
+
+</html>

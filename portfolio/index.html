@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/favicon.png">
+    <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+    <title>Interactive Portfolio of Curt Reyes</title>
+</head>
+
+<body>
+    <noscript style="position: relative; z-index: 60000; color: white;">
+        Please enable Javascript
+    </noscript>
+    <div id="load-black"
+        style="background: black; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 50000;">
+    </div>
+    <p id="debug" style="position: fixed; left: 0; top: 0; background: white;"></p>
+    <div id="circle"></div>
+    <input type="checkbox" id="skip-intro-checkbox" style="display: none;">
+    <div id="first-visit" style="display: none;">
+        <button id="sparkle"></button>
+    </div>
+    <div id="on-load" style="display: none;">
+        <div id="sky">
+            <div id="keys">
+                <!-- <div id="w-key" class="btn-key press-key">W</div> -->
+                <!-- <div id="a-key" class="btn-key press-key">A</div> -->
+                <!-- <div id="s-key" class="btn-key press-key">S</div> -->
+                <!-- <div id="d-key" class="btn-key press-key">D</div> -->
+                <div id="up-key" class="btn-key press-key">&#8593;</div>
+                <div id="left-key" class="btn-key press-key">&#8592;</div>
+                <div id="down-key" class="btn-key press-key">&#8595;</div>
+                <div id="right-key" class="btn-key press-key">&#8594;</div>
+                <!-- <div id="space-key" class="btn-key press-key"></div> -->
+            </div>
+            <div id="tower" class="collide-border">
+                <div class="towerRoof collide"></div>
+                <div class="towerRoof collide"></div>
+                <div class="towerFloor">
+                    <!--  -->
+                    <div class="sign">
+                        <h4 id="test">Games:</h4>
+                    </div>
+                    <img src="/arcade.svg" style="margin: 0 auto; width: 26%;">
+                </div>
+                <div id="games/shapespace" class="towerFloor">
+                    <div class="sign">
+                        <h4>Shape Space</h4>
+                    </div>
+                </div>
+                <div id="games/shootback" class="towerFloor">
+                    <div class="sign">
+                        <h4>ShootBack</h4>
+                    </div>
+                </div>
+                <div id="games/timeismoney" class="towerFloor">
+                    <div class="sign">
+                        <h4>Time is Money</h4>
+                    </div>
+                </div>
+                <div class="towerFloor">
+                    <!--  -->
+                    <div class="sign">
+                        <h4>Other:</h4>
+                    </div>
+                    <img src="/table.svg" style="margin: 0 auto; width: 40%;">
+                    <div class="collide"
+                        style="position: absolute; left: 0; right: 0; margin: 0 auto; bottom: calc(2em + 21%); width: 40%; height: 6.5%;">
+                    </div>
+                    <img src="/chair.svg" style="width: 20%; position: absolute; bottom: 2em; left: 10%;">
+                    <div class="collide"
+                        style="position: absolute; left: 12.5%; bottom: 26%; width: 16%; height: 2.4%;"></div>
+                </div>
+                <div id="streamplusbizhawk" class="towerFloor">
+                    <div class="sign">
+                        <h4>StreamPlusBizhawk</h4>
+                    </div>
+                </div>
+                <div class="towerFloor">
+                    <!-- <h3>Stuffs
+                        <hr>
+                    </h3> -->
+                    <img id="plant" src="/plant.svg">
+                    <img id="couch" src="/couch.svg">
+                    <div id="couch-collision-1" class="collide"></div>
+                    <div id="couch-collision-2" class="collide"></div>
+                    <div id="couch-collision-3" class="collide"></div>
+                </div>
+                <div id="about" class="towerFloor">
+                    <div class="sign">
+                        <h4>About</h4>
+                    </div>
+                </div>
+                <div id="elevator">
+                    <div id="elevator-main" class="collide-border"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar-module bg-grass" data-active="nav-item-portfolio"></nav>
+    <div id="ground">
+        <footer class="container">
+            <hr>
+            <p style="float: left;">Curt Reyes &copy; 2019</p>
+            <button id="play-intro" class="btn btn-link text-body">Play intro</button>
+        </footer>
+    </div>
+    <script src="/portfolio.bundle.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> -->
+</body>
+
+</html>

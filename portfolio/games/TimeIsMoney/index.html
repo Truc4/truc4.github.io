@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/favicon.png">
+    <title>Time is Money</title>
+</head>
+
+<body>
+    <noscript style="position: relative; z-index: 60000; color: white;">
+        Please enable Javascript
+    </noscript>
+    <div id="load-black"
+        style="background: black; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 50000;">
+    </div>
+    <nav class="navbar-module bg-primary" data-active="nav-item-games"></nav>
+    <div class="container my-4">
+        <h2>Time is Money</h2>
+        <p>This is my third finished project, another game, Time is Money.
+            I made this game for Ludum Dare 43 with the theme this time being
+            "Sacrifices must be made". My goal was to make a polished,
+            complete, game. Sadly I didn't place because I didn't have time
+            to player other entries and that is required to get a placement
+            in Ludum Dare. I worked alone, and once again this game was made
+            using the Godot game engine.
+        </p>
+        <label><a href="https://ldjam.com/events/ludum-dare/43" target="_blank">LD43</a> entry: </label>
+        <a class="btn btn-primary collide" href="https://ldjam.com/events/ludum-dare/43/time-is-money"
+            target="_blank">Time is Money</a>
+        <!-- <label>Download: </label> -->
+        <!-- <a href="https://gamejolt.com/games/shapes/360636">https://gamejolt.com/games/shapes/360636</a> -->
+        <!-- <br> -->
+        <!-- <a class="btn btn-primary collide mt-2" href="../TimeIsMoneyHTML/index.html">Play</a> -->
+    </div>
+    <div class="godot-game">
+        <div id="container" class="collide">
+            <canvas id="canvas" width="640" height="480">
+                HTML5 canvas appears to be unsupported in the current browser.<br />
+                Please try updating or use a different browser.
+            </canvas>
+            <div id="status">
+                <div id='status-progress' style='display: none;' oncontextmenu="event.preventDefault();">
+                    <div id='status-progress-inner'></div>
+                </div>
+                <div id='status-indeterminate' style='display: none;' oncontextmenu="event.preventDefault();">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div id="status-notice" class="godot" style='display: none;'></div>
+            </div>
+        </div>
+        <!-- <div id="output-panel" class="godot" style='display: none;' hidden>
+                <div id="output-header">
+                    Output:
+                    <button id='output-clear' class='godot' type='button' autocomplete='off'>Clear</button>
+                </div>
+                <div id="output-container"><div id="output-scroll"></div></div>
+            </div> -->
+
+        <script type="text/javascript" src="/portfolio/games/timeismoney/TimeIsMoney.js"></script>
+        <script type="text/javascript">//<![CDATA[
+
+            var engine = new Engine;
+
+            (function () {
+
+                const BASENAME = 'TimeIsMoney';
+                const DEBUG_ENABLED = false;
+                const INDETERMINATE_STATUS_STEP_MS = 100;
+
+                var container = document.getElementById('container');
+                var canvas = document.getElementById('canvas');
+                var statusProgress = document.getElementById('status-progress');
+                var statusProgressInner = document.getElementById('status-progress-inner');
+                var statusIndeterminate = document.getElementById('status-indeterminate');
+                var statusNotice = document.getElementById('status-notice');
+
+                var initializing = true;
+                var statusMode = 'hidden';
+                var indeterminiateStatusAnimationId = 0;
+
+                setStatusMode('indeterminate');
+                engine.setCanvas(canvas);
+
+                function setStatusMode(mode) {
+
+                    if (statusMode === mode || !initializing)
+                        return;
+                    [statusProgress, statusIndeterminate, statusNotice].forEach(elem => {
+                        elem.style.display = 'none';
+                    });
+                    if (indeterminiateStatusAnimationId !== 0) {
+                        cancelAnimationFrame(indeterminiateStatusAnimationId);
+                        indeterminiateStatusAnimationId = 0;
+                    }
+                    switch (mode) {
+                        case 'progress':
+                            statusProgress.style.display = 'block';
+                            break;
+                        case 'indeterminate':
+                            statusIndeterminate.style.display = 'block';
+                            indeterminiateStatusAnimationId = requestAnimationFrame(animateStatusIndeterminate);
+                            break;
+                        case 'notice':
+                            statusNotice.style.display = 'block';
+                            break;
+                        case 'hidden':
+                            break;
+                        default:
+                            throw new Error("Invalid status mode");
+                    }
+                    statusMode = mode;
+                }
+
+                function animateStatusIndeterminate(ms) {
+                    var i = Math.floor(ms / INDETERMINATE_STATUS_STEP_MS % 8);
+                    if (statusIndeterminate.children[i].style.borderTopColor == '') {
+                        Array.prototype.slice.call(statusIndeterminate.children).forEach(child => {
+                            child.style.borderTopColor = '';
+                        });
+                        statusIndeterminate.children[i].style.borderTopColor = '#dfdfdf';
+                    }
+                    requestAnimationFrame(animateStatusIndeterminate);
+                }
+
+                function setStatusNotice(text) {
+
+                    while (statusNotice.lastChild) {
+                        statusNotice.removeChild(statusNotice.lastChild);
+                    }
+                    var lines = text.split('\n');
+                    lines.forEach((line, index) => {
+                        statusNotice.appendChild(document.createTextNode(line));
+                        statusNotice.appendChild(document.createElement('br'));
+                    });
+                };
+
+                engine.setProgressFunc((current, total) => {
+
+                    if (total > 0) {
+                        statusProgressInner.style.width = current / total * 100 + '%';
+                        setStatusMode('progress');
+                        if (current === total) {
+                            // wait for progress bar animation
+                            setTimeout(() => {
+                                setStatusMode('indeterminate');
+                            }, 500);
+                        }
+                    } else {
+                        setStatusMode('indeterminate');
+                    }
+                });
+
+                if (DEBUG_ENABLED) {
+                    var outputRoot = document.getElementById("output-panel");
+                    var outputScroll = document.getElementById("output-scroll");
+                    var OUTPUT_MSG_COUNT_MAX = 400;
+
+                    document.getElementById('output-clear').addEventListener('click', () => {
+                        while (outputScroll.firstChild) {
+                            outputScroll.firstChild.remove();
+                        }
+                    });
+
+                    outputRoot.style.display = 'block';
+
+                    function print(text) {
+                        while (outputScroll.childElementCount >= OUTPUT_MSG_COUNT_MAX) {
+                            outputScroll.firstChild.remove();
+                        }
+                        var msg = document.createElement("div");
+                        if (String.prototype.trim.call(text).startsWith("**ERROR**")) {
+                            msg.style.color = "#d44";
+                        } else if (String.prototype.trim.call(text).startsWith("**WARNING**")) {
+                            msg.style.color = "#ccc000";
+                        } else if (String.prototype.trim.call(text).startsWith("**SCRIPT ERROR**")) {
+                            msg.style.color = "#c6d";
+                        }
+                        msg.textContent = text;
+                        var scrollToBottom = outputScroll.scrollHeight - (outputScroll.clientHeight + outputScroll.scrollTop) < 10;
+                        outputScroll.appendChild(msg);
+                        if (scrollToBottom) {
+                            outputScroll.scrollTop = outputScroll.scrollHeight;
+                        }
+                    };
+
+                    function printError(text) {
+                        if (!String.prototype.trim.call(text).startsWith('**ERROR**: ')) {
+                            text = '**ERROR**: ' + text;
+                        }
+                        print(text);
+                    }
+
+                    engine.setStdoutFunc(text => {
+                        print(text);
+                        console.log(text);
+                    });
+
+                    engine.setStderrFunc(text => {
+                        printError(text);
+                        console.warn(text);
+                    });
+                }
+
+                engine.startGame(BASENAME + '.pck').then(() => {
+                    setStatusMode('hidden');
+                    initializing = false;
+                }, err => {
+                    if (DEBUG_ENABLED) {
+                        printError(err.message);
+                        console.warn(err);
+                    }
+                    setStatusNotice(err.message);
+                    setStatusMode('notice');
+                    initializing = false;
+                });
+            })();
+        //]]></script>
+
+    </div>
+    <div class="godot-hide my-2 text-center">
+        <h4>For some reason collisions only work in Firefox :(</h4>
+        <br>
+        <h5><strong>F11 for fullscreen</strong>
+            <br>
+            <strong>WASD</strong> or <strong>Arrow keys</strong> to move
+            <br>
+            Space or click to swing weapon
+            <br>
+            Weapon swings towards cursor
+            <br>
+            Time is Money so get as much time as you can!
+        </h5>
+    </div>
+    <div style="height: 100px;"></div>
+    <script src="/init.bundle.js"></script>
+    <script src="/godot.bundle.js"></script>
+</body>
+
+</html>

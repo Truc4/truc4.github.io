@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/favicon.png">
+    <title>About</title>
+</head>
+
+<body>
+    <noscript style="position: relative; z-index: 60000; color: white;">
+        Please enable Javascript
+    </noscript>
+    <div id="load-black"
+        style="background: black; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 50000;">
+    </div>
+    <nav class="navbar-module bg-primary" data-active="nav-item-stream"></nav>
+    <div class="container my-4">
+        <h3>StreamPlusBizhawk</h3>
+        <p>StreamPlusBizhawk is an extension I made for Twitch that allows
+            for interaction between stream viewers and the Bizhawk emulator.
+            Using lua modules you can play games and viewers can manipulate
+            elements of the game with this extension. It was created in four
+            parts, the front end, which is a web application, the backend server
+            made with NodeJS and hosted with AWS lambda, the broadcaster
+            client, made with NodeJS, and the backend scripts, made with lua,
+            all communicate together so the extension works.
+        </p>
+        <a class="btn btn-primary collide" href="https://www.twitch.tv/ext/uf84dqqjqu5met3hq8b59mc0maikt4-1.1.0"
+            target="_blank">StreamPlusBizhawk</a>
+        <!-- <video width="320" height="240">
+            <source src="https://www.twitch.tv/truc_e/clip/CovertCharmingPotTheRinger">
+            <!-- <source src="movie.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+        </video> -->
+    </div>
+    <!-- KitschyAdventurousNostrilShadyLulu -->
+    <!-- CovertCharmingPotTheRinger -->
+    <div class="text-center bg-dark">
+        <iframe class="m-2 collide" src="https://clips.twitch.tv/embed?clip=CovertCharmingPotTheRinger&autoplay=false"
+            height="360" width="640" frameborder="0" scrolling="no" allowfullscreen="true">
+        </iframe>
+    </div>
+    <script src="/init.bundle.js"></script>
+</body>
+
+</html>
