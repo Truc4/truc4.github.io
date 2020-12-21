@@ -4,10 +4,11 @@ html {
 
 body {
     width: 100vw;
-    height: 100vh !important;
+    /* height: 100vh !important; */
     /* z-index: 1;   */
     max-width: 100%;
     overflow-anchor: none;
+    /* overflow: inherit; */
     /* background-color: #e9ecef; */
 }
 
