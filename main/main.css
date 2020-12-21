@@ -40,3 +40,8 @@ body {
     align-items: center;
     height: 100%;
 }
+
+#navbar {
+    position: sticky;
+    top: 0;
+}

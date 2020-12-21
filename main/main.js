@@ -7,8 +7,6 @@ var ctx = canvas.getContext("2d");
 canvas.width = document.getElementById("canvasSize").getBoundingClientRect().width;
 canvas.height = document.getElementById("canvasSize").getBoundingClientRect().height;
 
-console.log(canvas.height);
-
 // ctx.fillStyle = "rgba(0, 0, 0, 1)";
 // ctx.fillRect(0, 0, getViewport()[0], getViewport()[1]);
 
@@ -41,7 +39,6 @@ function main() {
     // ctx.fillStyle = "#FFF";
     // ctx.fillRect(10, 10, 10, 10);
 
-    console.log(pixels[0]);
     pixels.forEach((pixel, index) => {
         // const trail = 4;
         // for (i = trail; i > -1; i--) {
