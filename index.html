@@ -11,12 +11,12 @@
 </head>
 
 <body>
-    <nscript style="position: relative; z-index: 60000; color: white;">
+    <noscript style="position: relative; z-index: 60000; color: white;">
         Please enable Javascript
-        </noscript>
-        <div id="load-black" style="background: black; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 50000;">
-        </div>
-        <!-- <div class="bg-black" style="height:100vh; position: relative; z-index: -1;">
+    </noscript>
+    <div id="load-black" style="background: black; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 50000;">
+    </div>
+    <!-- <div class="bg-black" style="height:100vh; position: relative; z-index: -1;">
         <div class="container py-5 center">
             <p class="head text-center text-primary my-0">Curt Reyes</p>
         </div>
@@ -25,57 +25,57 @@
         <div id='stars2'></div>
         <div id='stars3'></div>
     </div> -->
-        <div id="canvasSize" class="center">
-            <canvas id="canvas"></canvas>
-            <h1 id="head" class="head" style="position: inherit; z-index: 10;">
-                Curt Reyes<br />
-                <div class="center mt-3"> <input type="button" class="btn btn-primary collide" value="&#10597;" onClick="document.getElementById('navbar').scrollIntoView();" />
-                </div>
-            </h1>
-        </div>
-        <nav id="navbar" class="sticky-top bg-light navbar navbar-expand-lg navbar-light sticky">
-            <div class="container"> <a class="navbar-brand" href="/">Home</a> <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#nav-portfolio" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+    <div id="canvasSize" class="center">
+        <canvas id="canvas"></canvas>
+        <h1 id="head" class="head" style="position: inherit; z-index: 10;">
+            Curt Reyes<br />
+            <div class="center mt-3"> <input type="button" class="btn btn-primary collide" value="&#10597;" onClick="document.getElementById('navbar').scrollIntoView();" />
+            </div>
+        </h1>
+    </div>
+    <nav id="navbar" class="sticky-top bg-light navbar navbar-expand-lg navbar-light sticky">
+        <div class="container"> <a class="navbar-brand" href="/">Home</a> <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#nav-portfolio" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
             </button>
-                <div class="collapse navbar-collapse" id="nav-portfolio">
-                    <ul class="navbar-nav mr-auto">
-                        <li id="nav-item-portfolio" class="nav-item"> <a class="nav-link goto" href="/portfolio">Portfolio</a> </li>
-                        <li id="nav-item-about" class="nav-item"> <a class="nav-link goto" href="/portfolio/about">About</a>
-                        </li>
-                        <li id="nav-item-games" class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Games </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item goto" href="/portfolio/games/ShapeSpace">Shape Space</a> <a class="dropdown-item goto" href="/portfolio/games/ShootBack">ShootBack</a> <a class="dropdown-item goto" href="/portfolio/games/TimeIsMoney">Time Is Money</a>                                </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="jumbotron bg-light" style="border-radius:0">
-            <div class="container">
-                <h1 class="display-3">Hello, world!</h1>
-                <p>This is a placeholder! One day something important will be written here... hopefully
-                </p>
-                <p><a class="btn btn-primary btn-lg collide" href="#" role="button">Button!</a></p>
+            <div class="collapse navbar-collapse" id="nav-portfolio">
+                <ul class="navbar-nav mr-auto">
+                    <li id="nav-item-portfolio" class="nav-item"> <a class="nav-link goto" href="/portfolio">Portfolio</a> </li>
+                    <li id="nav-item-about" class="nav-item"> <a class="nav-link goto" href="/portfolio/about">About</a>
+                    </li>
+                    <li id="nav-item-games" class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Games </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item goto" href="/portfolio/games/ShapeSpace">Shape Space</a> <a class="dropdown-item goto" href="/portfolio/games/ShootBack">ShootBack</a> <a class="dropdown-item goto" href="/portfolio/games/TimeIsMoney">Time Is Money</a>                            </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div style="height:2000px"></div>
-        <footer class="bd-footer p-3 p-md-5 mt-5 text-center text-sm-start">
-            <div class="container">
-                <ul class="bd-footer-links p-0">
-                    <!-- <li class="d-inline-block"><a href="https://github.com/twbs">GitHub</a></li> -->
-                    <li class="d-inline-block ms-3"><a class="text-dark mx-1" href="https://www.youtube.com/user/curtreyes00" target="_blank">YouTube</a></li>
-                    <li class="d-inline-block ms-3"><a class="text-dark mx-1" href="https://www.twitch.tv/truc_e" target="_blank">Twitch</a></li>
-                    <li class="d-inline-block ms-3"><a class="text-dark mx-1" href="https://twitter.com/Truc_e" target="_blank">Twitter</a></li>
-                    <!-- <li class="d-inline-block ms-3"><a href="/docs/5.0/examples/">Examples</a></li> -->
-                    <li class="d-inline-block ms-3"><a class="text-dark mx-1" href="/portfolio/about">About</a></li>
-                </ul>
-                <p>©2020 Curt Reyes</p>
-            </div>
-        </footer>
-        <script>
-            // document.body.removeChild(document.getElementById("load-black"));
-        </script>
-        <script src="/init.bundle.js"></script>
-        <script src="/main/main.js"></script>
-        <!-- <script src="/home.bundle.js"></script> -->
+    </nav>
+    <div class="jumbotron bg-light" style="border-radius:0">
+        <div class="container">
+            <h1 class="display-3">Hello, world!</h1>
+            <p>This is a placeholder! One day something important will be written here... hopefully
+            </p>
+            <p><a class="btn btn-primary btn-lg collide" href="#" role="button">Button!</a></p>
+        </div>
+    </div>
+    <div style="height:2000px"></div>
+    <footer class="bd-footer p-3 p-md-5 mt-5 text-center text-sm-start">
+        <div class="container">
+            <ul class="bd-footer-links p-0">
+                <!-- <li class="d-inline-block"><a href="https://github.com/twbs">GitHub</a></li> -->
+                <li class="d-inline-block ms-3"><a class="text-dark mx-1" href="https://www.youtube.com/user/curtreyes00" target="_blank">YouTube</a></li>
+                <li class="d-inline-block ms-3"><a class="text-dark mx-1" href="https://www.twitch.tv/truc_e" target="_blank">Twitch</a></li>
+                <li class="d-inline-block ms-3"><a class="text-dark mx-1" href="https://twitter.com/Truc_e" target="_blank">Twitter</a></li>
+                <!-- <li class="d-inline-block ms-3"><a href="/docs/5.0/examples/">Examples</a></li> -->
+                <li class="d-inline-block ms-3"><a class="text-dark mx-1" href="/portfolio/about">About</a></li>
+            </ul>
+            <p>©2020 Curt Reyes</p>
+        </div>
+    </footer>
+    <script>
+        // document.body.removeChild(document.getElementById("load-black"));
+    </script>
+    <script src="/init.bundle.js"></script>
+    <script src="/main/main.js"></script>
+    <!-- <script src="/home.bundle.js"></script> -->
 </body>
 
 </html>
