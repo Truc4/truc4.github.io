@@ -7,12 +7,21 @@ var ctx = canvas.getContext("2d");
 canvas.width = document.getElementById("canvasSize").getBoundingClientRect().width;
 canvas.height = document.getElementById("canvasSize").getBoundingClientRect().height;
 
+document.getElementById("introButton").addEventListener("click", () => {
+    console.log(document.getElementById("html").style);
+    document.getElementById("html").style["-ms-overflow-style"] = "";
+    document.getElementById("html").style["scrollbar-width"] = "";
+    document.getElementById("html").setAttribute('data--webkit-scrollbar', '');
+});
+
 // ctx.fillStyle = "rgba(0, 0, 0, 1)";
 // ctx.fillRect(0, 0, getViewport()[0], getViewport()[1]);
 
 for (i = 0; i < rand(8); i++) {
     spawnPixel();
 }
+
+console.log('y');
 
 document.getElementById("head").style.opacity = "1";
 

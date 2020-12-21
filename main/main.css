@@ -1,42 +1,54 @@
 html {
     scroll-behavior: smooth;
+    /* -ms-overflow-style: none;
+    scrollbar-width: none; */
 }
 
+html::-webkit-scrollbar {
+    /* display: none; */
+}
+
+
+}
 body {
     width: 100vw;
     /* height: 100vh !important; */
     /* z-index: 1;   */
+    
     max-width: 100%;
     overflow-anchor: none;
     /* overflow: inherit; */
-    /* background-color: #e9ecef; */
+    /* overflow: hidden; */
+    
+    background-color: #000;
 }
-
 #canvasSize {
     height: 100vh;
     width: 100%;
     background: #000;
+    text-align: center;
 }
-
 #canvas {
     position: absolute;
     z-index: 0;
     top: 0;
     left: 0;
 }
-
 .head {
+    text-align: center;
     transition: all 0.5s linear .5s;
     opacity: 0;
     /* font-family: 'Open Sans', sans-serif; */
+    
     font-weight: 300;
     font-size: 36px;
     /* color: rgb(0, 0, 0); */
+    
     color: rgb(151, 151, 151);
 }
-
 .center {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 100%;
