@@ -4,7 +4,7 @@
     display: inline-block;
     background-color: #fff;
     margin: 10px;
-    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, .1);
+    box-shadow: 3px 3px 2px 0px rgba(0, 0, 0, .3);
     /* box-shadow: 5px 10px #888888; */
     max-width: 300px;
     vertical-align: top;
