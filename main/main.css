@@ -8,6 +8,21 @@ html::-webkit-scrollbar {
     /* display: none; */
 }
 
+mark {
+    /* background: none; */
+    /* color: blue; */
+    /* padding: 0; */
+}
+
+.nav-link:not(:disabled) {
+    cursor: pointer;
+}
+
+.project {
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, .1);
+    margin: 10px;
+}
+
 
 }
 body {

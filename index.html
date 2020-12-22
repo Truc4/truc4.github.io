@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="main/main.css">
     <link rel="stylesheet" href="main/button.css">
     <link rel="stylesheet" href="main/placeholders.css">
-    <title>Truce.com</title>
+    <title>Curt Reyes</title>
 </head>
 
 <body>
@@ -29,8 +29,8 @@
     <div id="canvasSize" class="center">
         <canvas id="canvas"></canvas>
         <h1 id="head" class="head" style="position: inherit; z-index: 10;">
-            Curt Reyes<br />
-            <div class="center mt-3"> <button id="introButton" class="btnb draw-border collide " onClick="document.getElementById('navbar').scrollIntoView();">See stuff &#10597;</button>
+            Hey, I'm <mark class="collide">Curt Reyes</mark><br>and I like making stuff<br />
+            <div class="center mt-3"> <button id="introButton" class="btnb draw-border collide " onClick="document.getElementById('navbar').scrollIntoView();">What kind of stuff? &#10597;</button>
             </div>
         </h1>
     </div>
@@ -39,9 +39,9 @@
             </button>
             <div class="collapse navbar-collapse" id="nav-portfolio">
                 <ul class="navbar-nav mr-auto">
-                    <li id="nav-item-portfolio" class="nav-item"> <a class="nav-link goto" href="/portfolio">Portfolio</a> </li>
-                    <li id="nav-item-about" class="nav-item"> <a class="nav-link goto" href="/portfolio/about">About</a>
-                    </li>
+                    <li id="nav-item-about" class="nav-item"> <a class="nav-link" onClick="document.getElementById('about').scrollIntoView();">About</a></li>
+                    <li id="nav-item-projects" class="nav-item"> <a class="nav-link" onClick="document.getElementById('projects').scrollIntoView();">Portfolio</a></li>
+                    <li id="nav-item-portfolio" class="nav-item"> <a class="nav-link goto" href="/portfolio">Prototype website</a> </li>
                     <li id="nav-item-games" class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Games </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item goto" href="/portfolio/games/ShapeSpace">Shape Space</a> <a class="dropdown-item goto" href="/portfolio/games/ShootBack">ShootBack</a> <a class="dropdown-item goto" href="/portfolio/games/TimeIsMoney">Time Is Money</a>                            </div>
                     </li>
@@ -49,15 +49,26 @@
             </div>
         </div>
     </nav>
-    <div class="jumbotron bg-light" style="border-radius:0">
+    <div id="about" class="jumbotron bg-light" style="border-radius:0">
         <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
-            <p>This is a placeholder! One day something important will be written here... hopefully
+            <h1 class="display-3">Websites!</h1>
+            <p>and games, bots, apps, extensions. I develop lots of stuff for fun and I can make you stuff too! I am a college student looking to use my skillset to find projects to add to my portfolio, and hopefully pay my rent while I'm at it.
+                <br>
             </p>
-            <p><a class="btn btn-primary btn-lg collide" href="#" role="button">Button!</a></p>
+            <!-- <p><a class="btn btn-primary btn-lg collide" href="#" role="button">Button!</a></p> -->
+        </div>
+    </div>
+    <div id="projects" class="jumbotron bg-light" style="border-radius:0">
+        <div class="container">
+            <h1 class="display-3">Portfolio</h1>
+            <p>
+                I am at the start of journey when it comes to professional work but I will have more in no time!
+            </p>
+            <!-- <p><a class="btn btn-primary btn-lg collide" href="#" role="button">Button!</a></p> -->
         </div>
     </div>
     <div class="container center">
+        <img class="project" src="main/proto.png" width="300" height="425">
         <div class="box-placeholder">
             <div class="p-4">
                 <span class="category text link"></span>
@@ -65,8 +76,9 @@
                 <h4 class="text"></h4>
             </div>
             <hr>
-            <div class="image">
-                <div class="embed-responsive embed-responsive-16by9"></div>
+            <div class="image center">
+                <!-- <div class="embed-responsive embed-responsive-16by9"></div> -->
+                <p>Your website here</p>
             </div>
             <hr>
             <div class="excerpt p-4">
